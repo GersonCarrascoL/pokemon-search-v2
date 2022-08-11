@@ -1,12 +1,12 @@
 import PokemonRepository from './pokemonRepository';
 
-interface IPokemonRepository {
-	pokemon: typeof PokemonRepository
+interface PokemonRepository {
+	pokemon: typeof PokemonRepository;
 }
-const repositories: IPokemonRepository = {
+const repositories: PokemonRepository = {
 	pokemon: PokemonRepository,
 };
 
 export const RepositoryFactory = {
-	get: (name: string) => repositories[name as keyof IPokemonRepository]
+	get: (name: string) => repositories[name as keyof PokemonRepository]
 };
