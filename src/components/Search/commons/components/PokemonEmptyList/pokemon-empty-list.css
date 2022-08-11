@@ -1,0 +1,17 @@
+.empty-list-title {
+	font-size: 36px;
+	line-height: 43px;
+	letter-spacing: 0em;
+}
+
+.empty-list-text {
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 0em;
+}
+
+.v-btn.v-btn--has-bg {
+	background-color: #f22539 !important;
+	border-radius: 60px;
+	color: white;
+}

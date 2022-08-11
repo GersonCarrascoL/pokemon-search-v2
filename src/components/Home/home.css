@@ -1,0 +1,20 @@
+.home-title {
+	font-size: 26px;
+	line-height: 31px;
+	letter-spacing: 0em;
+	color: #353535;
+}
+
+.home-description {
+	font-size: 18px;
+	line-height: 27px;
+	letter-spacing: 0em;
+}
+
+.v-btn.v-btn--has-bg {
+	background-color: #f22539 !important;
+	border-radius: 60px;
+	color: white;
+	font-size: 18px;
+	padding: 11px 20px !important;
+}
