@@ -1,3 +1,3 @@
 <template src="./search.html"></template>
 <style scoped src="./search.css"></style>
-<script src="./search.js"></script>
+<script lang="ts" src="./search.ts"></script>

@@ -10,7 +10,6 @@ html,
 body {
     font-family: "Lato", sans-serif;
 }
-
 #app {
     font-family: "Lato", sans-serif;
 }
