@@ -1,3 +1,10 @@
+.search-bar-position {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background-color: white;
+}
+
 .btn-fav {
 	color: #bfbfbf !important;
 	background: #f5f5f5 !important;
@@ -37,4 +44,22 @@
 	line-height: 26px;
 	letter-spacing: 0em;
 	color: #353535;
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

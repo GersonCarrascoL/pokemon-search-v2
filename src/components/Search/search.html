@@ -3,7 +3,7 @@
 	<v-container v-if="!isLoading"
 							 class="p-0">
 		<v-row justify="center"
-					 class="mt-4">
+					 class="search-bar-position">
 			<v-col cols="12"
 						 sm="8"
 						 md="8"
@@ -18,23 +18,26 @@
 											@click:clear="onClearClicked"></v-text-field>
 			</v-col>
 		</v-row>
-		<v-row justify="center"
-					 class="mt-4"
-					 v-if="alertSuccess || alertError">
-			<v-col cols="12"
-						 sm="8"
-						 md="8"
-						 lg="6">
-				<v-alert type="success"
-								 :value="alertSuccess">
-					{{ successMessage }}
-				</v-alert>
-				<v-alert type="error"
-								 :value="alertError">
-					{{ errorMessage }}
-				</v-alert>
-			</v-col>
-		</v-row>
+		<Transition name="bounce">
+			<div v-if="alertSuccess || alertError">
+				<v-row justify="center"
+							 class="mt-4">
+					<v-col cols="12"
+								 sm="8"
+								 md="8"
+								 lg="6">
+						<v-alert type="success"
+										 :value="alertSuccess">
+							{{ successMessage }}
+						</v-alert>
+						<v-alert type="error"
+										 :value="alertError">
+							{{ errorMessage }}
+						</v-alert>
+					</v-col>
+				</v-row>
+			</div>
+		</Transition>
 		<v-row justify="center"
 					 class="content mb-12 mt-0">
 			<v-col cols="12"

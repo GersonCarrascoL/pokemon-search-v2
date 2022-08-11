@@ -6,6 +6,7 @@ import LoadingScreen from "../../commons/components/LoadingScreen.vue";
 import PokemonEmptyList from "./commons/components/PokemonEmptyList/PokemonEmptyList.vue";
 import PokemonDetail from "./commons/components/PokemonDetail/PokemonDetail.vue";
 import { ItemSearch } from './commons/interface/item-search';
+import { Type } from './commons/interface/pokemon';
 
 export default Vue.extend({
 	data: () => ({
@@ -39,7 +40,8 @@ export default Vue.extend({
 			data["nameUpper"] =
 				data.name.charAt(0).toUpperCase() + data.name.slice(1);
 
-			data.types.forEach((type: any, index: number) => {
+			console.log(data)
+			data.types.forEach((type: Type, index: number) => {
 				data["typesList"] = "";
 				index + 1 == data.types.length
 					? (data["typesList"] += type.type.name + "")
@@ -67,7 +69,7 @@ export default Vue.extend({
 					});
 				}
 			} else {
-				favorites.forEach((pokemonFav: ItemSearch, index: number, object: any) => {
+				favorites.forEach((pokemonFav: ItemSearch, index: number, object: []) => {
 					if (pokemonFav.name == pokemon.name) {
 						object.splice(index, 1);
 					}
