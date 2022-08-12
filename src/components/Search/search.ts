@@ -5,8 +5,8 @@ const PokemonRepository = RepositoryFactory.get("pokemon");
 import LoadingScreen from "../../commons/components/LoadingScreen.vue";
 import PokemonEmptyList from "./commons/components/PokemonEmptyList/PokemonEmptyList.vue";
 import PokemonDetail from "./commons/components/PokemonDetail/PokemonDetail.vue";
-import { ItemSearch } from './commons/interface/item-search';
-import { Type } from './commons/interface/pokemon';
+import { ItemSearch } from './commons/interface';
+import { Type } from './commons/interface';
 
 export default Vue.extend({
 	data: () => ({
