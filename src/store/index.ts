@@ -78,7 +78,7 @@ export const store = new Vuex.Store({
 					pokemon.name.charAt(0).toUpperCase() +
 					pokemon.name.slice(1);
 			});
-			state.isLoading = false;
+			// state.isLoading = false;
 			state.successMessage = 'Successfull search!.';
 			state.errorMessage = '';
 			state.alertSuccess = true;
@@ -86,18 +86,24 @@ export const store = new Vuex.Store({
 			setTimeout(() => {
 				state.alertSuccess = false;
 			}, 2000);
+			setTimeout(() => {
+				state.isLoading = false;
+			}, 1000);
 		},
 		FETCH_LIST_POKEMON_SUCCESS_NOTHING(state) {
 			state.pokemonList = [];
-			state.isLoading = false;
 			state.successMessage = "Nothing found";
 			state.errorMessage = '';
-			state.alertSuccess = true;
 			state.alertError = false;
+			setTimeout(() => {
+				state.alertSuccess = false;
+			}, 2000);
+			setTimeout(() => {
+				state.isLoading = false;
+			}, 1000);
 		},
 		FETCH_LIST_POKEMON_ERROR(state, error) {
 			state.pokemonList = [];
-			state.isLoading = false;
 			state.successMessage = "";
 			if (error instanceof Error) {
 				state.errorMessage = error.message;
@@ -107,6 +113,9 @@ export const store = new Vuex.Store({
 			setTimeout(() => {
 				state.alertError = false;
 			}, 2000);
+			setTimeout(() => {
+				state.isLoading = false;
+			}, 1000);
 		},
 		FETCH_DETAIL_POKEMON_SUCCESS(state, { data, pokemon }) {
 			data["nameUpper"] =
@@ -132,7 +141,6 @@ export const store = new Vuex.Store({
 			state.favorites.push(pokemon);
 		},
 		FETCH_DELETE_FAVORITE(state, pokemon: ItemSearch) {
-			console.log(pokemon)
 			const index = state.favorites.findIndex(item => item.name === pokemon.name);
 			state.favorites.splice(index, 1);
 		},
@@ -161,7 +169,6 @@ export const store = new Vuex.Store({
 				url: data.url,
 				favorite: false
 			});
-			state.isLoading = false;
 			state.successMessage = 'Successfull search!.';
 			state.errorMessage = '';
 			state.alertSuccess = true;
@@ -169,10 +176,12 @@ export const store = new Vuex.Store({
 			setTimeout(() => {
 				state.alertSuccess = false;
 			}, 2000);
+			setTimeout(() => {
+				state.isLoading = false;
+			}, 1000);
 		},
 		FETCH_DETAIL_POKEMON_SEARCH_SUCCESS_NOTHING(state) {
 			state.pokemonList = [];
-			state.isLoading = false;
 			state.successMessage = "Nothing found";
 			state.errorMessage = '';
 			state.alertSuccess = true;
@@ -180,10 +189,12 @@ export const store = new Vuex.Store({
 			setTimeout(() => {
 				state.alertSuccess = false;
 			}, 2000);
+			setTimeout(() => {
+				state.isLoading = false;
+			}, 1000);
 		},
 		FETCH_DETAIL_POKEMON_SEARCH_ERROR(state, error) {
 			state.pokemonList = [];
-			state.isLoading = false;
 			state.successMessage = "";
 			if (error instanceof Error) {
 				state.errorMessage = error.message;
@@ -193,6 +204,9 @@ export const store = new Vuex.Store({
 			setTimeout(() => {
 				state.alertError = false;
 			}, 2000);
+			setTimeout(() => {
+				state.isLoading = false;
+			}, 1000);
 		}
 	},
 	actions: {
@@ -254,7 +268,6 @@ export const store = new Vuex.Store({
 			context.commit('FETCH_DETAIL_POKEMON_SEARCH_LOAD');
 			PokemonRepository.getPokemon(inputSearch.toLowerCase().trim())
 				.then((result) => {
-					console.log(result)
 					if (result.data != undefined) {
 						context.commit('FETCH_DETAIL_POKEMON_SEARCH_SUCCESS', result.data);
 					} else {
