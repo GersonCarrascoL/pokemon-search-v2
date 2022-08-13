@@ -1,36 +1,32 @@
+import { mapGetters } from 'vuex';
 import Vue from 'vue';
 export default Vue.extend({
 	data: () => ({
 		snackbar: false,
 		text: `Text  copied!`,
 	}),
-	props: {
-		value: Boolean,
-		passedObject: Object,
-	},
 	computed: {
-		show: {
-			get(): boolean {
-				return this.value;
-			},
-			set(value: boolean): void {
-				this.$emit("input", value);
-			},
-		},
+		...mapGetters({
+			showPokemonDetail: 'getShowPokemonDetail',
+			objectPassModal: 'getObjectPassModal',
+		}),
 	},
 	methods: {
 		copyClipboard() {
 			const clipboard =
 				"name: " +
-				this.passedObject.name +
+				this.objectPassModal.name +
 				", weight: " +
-				this.passedObject.weight +
+				this.objectPassModal.weight +
 				", height: " +
-				this.passedObject.height +
+				this.objectPassModal.height +
 				", types: " +
-				this.passedObject.typesList;
+				this.objectPassModal.typesList;
 			navigator.clipboard.writeText(clipboard);
 			this.snackbar = true;
 		},
+		closeModalDetail() {
+			this.$store.dispatch('closeModalDetail');
+		}
 	},
 });

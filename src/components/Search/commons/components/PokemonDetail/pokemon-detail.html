@@ -1,7 +1,8 @@
 <div>
-	<v-dialog v-model="show"
+	<v-dialog v-model="showPokemonDetail"
+						persistent
 						max-width="570px">
-		<template v-if="passedObject">
+		<template v-if="objectPassModal">
 			<v-card>
 				<div style="position: relative">
 					<v-btn class="btn-float-close"
@@ -11,15 +12,15 @@
 								 depressed
 								 top
 								 right
-								 @click.stop="show = false">
+								 @click.stop="closeModalDetail">
 						<v-icon class="icon-close"> mdi-close </v-icon>
 					</v-btn>
 				</div>
 				<v-row justify="center"
 							 class="bg ma-0">
 					<v-col cols="8">
-						<v-img v-if="passedObject"
-									 v-bind:src="passedObject.sprites.front_default"
+						<v-img v-if="objectPassModal"
+									 v-bind:src="objectPassModal.sprites.front_default"
 									 max-width="500"
 									 max-height="300">
 							<template v-slot:placeholder>
@@ -36,7 +37,7 @@
 					<v-row class="mx-0">
 						<p class="detail-description">
 							<strong>Name:</strong>
-							{{ passedObject.nameUpper }}
+							{{ objectPassModal.nameUpper }}
 						</p>
 					</v-row>
 					<v-row class="mx-0">
@@ -45,7 +46,7 @@
 					<v-row class="mx-0">
 						<p class="detail-description">
 							<strong>Weight:</strong>
-							{{ passedObject.weight }}
+							{{ objectPassModal.weight }}
 						</p>
 					</v-row>
 					<v-row class="mx-0">
@@ -54,7 +55,7 @@
 					<v-row class="mx-0">
 						<p class="detail-description">
 							<strong>Height:</strong>
-							{{ passedObject.height }}
+							{{ objectPassModal.height }}
 						</p>
 					</v-row>
 					<v-row class="mx-0">
@@ -63,7 +64,7 @@
 					<v-row class="mx-0">
 						<p class="detail-description">
 							<strong>Types:</strong>
-							{{ passedObject.typesList }}
+							{{ objectPassModal.typesList }}
 						</p>
 					</v-row>
 				</v-card-text>
@@ -85,7 +86,7 @@
 								 elevation="0"
 								 :class="[
 													{
-															'btn-fav-selected': passedObject.favorite,
+															'btn-fav-selected': objectPassModal.favorite,
 													},
 													'btn-fav',
 											]">
