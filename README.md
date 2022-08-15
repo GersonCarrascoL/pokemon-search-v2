@@ -17,6 +17,7 @@
 - Manejo de store con vuex
 - Separación de archivo .vue ( código más legible )
 - Uso de interfaces, constants
+- Uso de test unitarios
 
 ## Despliegue
 
