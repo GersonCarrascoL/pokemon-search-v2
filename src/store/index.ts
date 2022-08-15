@@ -27,9 +27,6 @@ export const store = new Vuex.Store({
 		getFavorites(state) {
 			return state.favorites;
 		},
-		// getInputSearch(state) {
-		// 	return state.inputSearch;
-		// },
 		getIsLoading(state) {
 			return state.isLoading;
 		},
